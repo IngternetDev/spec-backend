@@ -37,6 +37,12 @@ class User(AbstractUser):
         unique=True,
         verbose_name='email',
     )
+    about_me = models.TextField(blank=True)
+    profile_image = models.ImageField(upload_to='images/', blank=True)
+    telegram_url = models.URLField(blank=True)
+    facebook_url = models.URLField(blank=True)
+    twitter_url = models.URLField(blank=True)
+    vk_url = models.URLField(blank=True)
     role = models.TextField(
         choices=UserRole.choices,
         default=UserRole.USER,
@@ -61,5 +67,4 @@ class User(AbstractUser):
     @property
     def is_user(self):
         return self.role == UserRole.USER
-
 
